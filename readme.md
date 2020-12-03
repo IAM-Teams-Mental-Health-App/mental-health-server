@@ -1,6 +1,8 @@
 # mental-health-server
 
-## hosted server - tba
+## hosted server:
+
+## [https://iam-teams-health.herokuapp.com/](https://iam-teams-health.herokuapp.com/)
 
 ### Entities
 
