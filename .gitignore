@@ -109,3 +109,4 @@ dist
 .vscode/
 faker.js
 *.sqlite3
+*.sqlite
