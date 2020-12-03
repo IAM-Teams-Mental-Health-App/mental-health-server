@@ -5,6 +5,7 @@ const cors = require("cors");
 const morgan = require('morgan');
 // locals
 const UserRouter = require("./Users/user-routes");
+const PostRouter = require("./Posts/post-routes");
 
 // set up instance of server
 const server = express();
@@ -16,6 +17,7 @@ server.use(morgan("short"));
 
 // custom routes here
 server.use("/user", UserRouter);
+server.use("/post", PostRouter);
 
 // generic welcome
 server.get("/", (req, res) => {

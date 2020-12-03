@@ -33,6 +33,8 @@ function restrict() {
               }
               req.user = user;
               req.token = decoded;
+              // all good
+              // console.log(req.token);
               next();
           });
       } catch (err) {

@@ -1,28 +1,28 @@
 const db = require('../../database/config');
 
-function fetchAllProjs() {
+function fetchAllPosts() {
   return db("posts");
 }
 
-function findProjectById(id) {
+function findPostsById(id) {
   return db("posts").where({ id }).first();
 }
 
-async function insertProject(postData) {
+async function insertPost(postData) {
   const [postID] = await db("posts").insert(postData).returning("id");
-  return findProjectById(postID);
+  return findPostsById(postID);
 }
 
-async function updateProject(postData, id) {
+async function updatePost(postData, id) {
   await db("posts").update(postData).where({ id });
-  return findProjectById(id);
+  return findPostsById(id);
 }
 
-function removeProject(id) {
+function deletePost(id) {
   return db("posts").delete().where({ id });
 }
 
-function fetchProjByUserID(id) {
+function fetchPostByUserID(id) {
   return db("posts")
     .join("users", "users.id", "=", "posts.userID")
     .where("users.id", id)
@@ -37,11 +37,11 @@ function fetchProjByUserID(id) {
     );
 }
 
-export {
-  fetchAllProjs,
-  findProjectById,
-  insertProject,
-  updateProject,
-  removeProject,
-  fetchProjByUserID,
+module.exports = {
+  fetchAllPosts,
+  findPostsById,
+  insertPost,
+  updatePost,
+  deletePost,
+  fetchPostByUserID,
 };
