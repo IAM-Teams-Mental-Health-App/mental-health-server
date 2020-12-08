@@ -29,14 +29,21 @@ router.get('/:id', async (req,res)=>{
 });
 
 // create post
-router.post('/',authRestrict(), async (req,res)=>{
-  const userID = parseInt(req.token.userID);
+router.post('/',
+  //authRestrict(),
+  async (req,res)=>{
+
+  // const userID = parseInt(req.token.userID);
+
   const sentPost = req.body;
+
   // console.log("inserting...", userID,sentPost);
   if (!req.body.content || !req.body.type || !req.body.color){
     return res.status(400).json({ message: "missing content, type, color"});
   }
-  const post = await insertPost({...sentPost, userID});
+
+  console.log("posting to db...");
+  const post = await insertPost({...sentPost, userID: 1});
 
   if (!post){
     return res.status(404).json({
