@@ -1,7 +1,7 @@
 const db = require('../../database/config');
 
 function fetchAllPosts() {
-  return db("posts");
+  return db("posts").orderBy("dateCreated", "desc");
 }
 
 function findPostsById(id) {
