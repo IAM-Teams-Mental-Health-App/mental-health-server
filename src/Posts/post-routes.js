@@ -54,15 +54,15 @@ router.post('/',
   return res.status(201).json(post);
 });
 
-router.delete('/:id',authRestrict(), async (req,res)=>{
+router.delete('/:id', async (req,res)=>{
   // we would normally need to check if the proper owner is deleting their work, or the server
-  const userID = req.token.useID;
-  const post = await findPostsById(req.params.id);
-  if (post.userID !== userID){
-    return res.status(403).json({
-      message: "Not your content to delete."
-    });
-  }
+  // const userID = req.token.useID;
+  // const post = await findPostsById(req.params.id);
+  // if (post.userID !== userID){
+  //   return res.status(403).json({
+  //     message: "Not your content to delete."
+  //   });
+  // }
 
   const delPost = await deletePost(req.params.id);
   if (!delPost || delPost === 0) {
