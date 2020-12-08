@@ -108,5 +108,6 @@ dist
 
 .vscode/
 faker.js
-*.sqlite3
-*.sqlite
+*/*.sqlite3
+*/*.sqlite
+database/dev.sqlite
