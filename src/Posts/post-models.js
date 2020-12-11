@@ -1,7 +1,7 @@
 const db = require('../../database/config');
 
 function fetchAllPosts() {
-  return db("posts").orderBy("dateCreated", "desc");
+  return db("posts").orderBy("dateCreated", "desc").limit(9);
 }
 
 function findPostsById(id) {
@@ -34,7 +34,7 @@ function fetchPostByUserID(id) {
       "posts.content",
       "users.id as userID",
       "users.username",
-    );
+    ).limit(9);
 }
 
 module.exports = {
