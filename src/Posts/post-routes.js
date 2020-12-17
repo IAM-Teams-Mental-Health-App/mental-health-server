@@ -30,28 +30,30 @@ router.get('/:id', async (req,res)=>{
 
 // create post
 router.post('/',
-  //authRestrict(),
+  authRestrict(),
   async (req,res)=>{
 
-  // const userID = parseInt(req.token.userID);
+  // // const userID = parseInt(req.token.userID);
 
-  const sentPost = req.body;
+  // const sentPost = req.body;
 
-  // console.log("inserting...", userID,sentPost);
-  if (!req.body.content || !req.body.type || !req.body.color){
-    return res.status(400).json({ message: "missing content, type, color"});
-  }
+  // // console.log("inserting...", userID,sentPost);
+  // if (!req.body.content || !req.body.type || !req.body.color){
+  //   return res.status(400).json({ message: "missing content, type, color"});
+  // }
 
-  console.log("posting to db...");
-  const post = await insertPost({...sentPost, userID: 1});
+  // console.log("posting to db...");
+  // const post = await insertPost({...sentPost, userID: 1});
 
-  if (!post){
-    return res.status(404).json({
-			message: "Could not create post, try again later.",
-		});
-  }
+  // if (!post){
+  //   return res.status(404).json({
+	// 		message: "Could not create post, try again later.",
+	// 	});
+  // }
 
-  return res.status(201).json(post);
+  return res.status(201).json({
+    message: "Thank you for your interest, submitting to the database has been locked down."
+  });
 });
 
 router.delete('/:id', async (req,res)=>{
